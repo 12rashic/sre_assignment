@@ -77,7 +77,7 @@ autoscaling:
 
 
 secret:
-  name: sre_assignment_secret          
+  name: sre-assignment_secret          
   password: "MYPASSWORD"    
 
 

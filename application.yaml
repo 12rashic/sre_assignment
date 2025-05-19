@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sre-assignment
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: 'https://github.com/12rashic/sre_assignment'
+    targetRevision: HEAD 
+    path: "."   
+    helm:
+      valueFiles:
+        - values.yaml
+
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: sre-assignment
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
