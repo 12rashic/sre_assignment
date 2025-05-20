@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: {{ include "sre-assignment.fullname" . }}
   labels:
-    {{- include "sre_assignment.labels" . | nindent 4 }}
+    {{- include "sre-assignment.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "sre_assignment.selectorLabels" . | nindent 4 }}
+    {{- include "sre-assignment.selectorLabels" . | nindent 4 }}

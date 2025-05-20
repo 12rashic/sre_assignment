@@ -3,14 +3,14 @@ kind: Deployment
 metadata:
   name: {{ include "sre-assignment.fullname" . }}
   labels:
-    {{- include "sre_assignment.labels" . | nindent 4 }}
+    {{- include "sre-assignment.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "sre_assignment.selectorLabels" . | nindent 6 }}
+      {{- include "sre-assignment.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +18,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "sre_assignment.selectorLabels" . | nindent 8 }}
+        {{- include "sre-assignment.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "sre_assignment.serviceAccountName" . }}
+      serviceAccountName: {{ include "sre-assignment.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
