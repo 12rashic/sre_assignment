@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   name: "{{ include "sre-assignment.fullname" . }}-test-connection"
   labels:
-    {{- include "sre_assignment.labels" . | nindent 4 }}
+    {{- include "sre-assignment.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
